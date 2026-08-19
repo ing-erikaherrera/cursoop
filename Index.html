@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo Sustentable | Ingeniería Informática</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #14b8a6;
+            --accent: #22c55e;
+            --bg: #f0fdf4;
+            --surface: #ffffff;
+            --text: #134e4a;
+            --text-muted: #5eead4;
+            --dark: #042f2e;
+            --gray: #64748b;
+            --shadow: 0 10px 40px -10px rgba(13, 148, 136, 0.25);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #0f766e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--primary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .btn-nav {
+            background: var(--accent);
+            color: var(--dark) !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .btn-nav:hover {
+            background: #16a34a;
+            color: white !important;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(160deg, #042f2e 0%, #0f766e 50%, #0d9488 100%);
+            color: white;
+            padding: 5rem 1.5rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #86efac;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 540px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin: 0 auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat span {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* ========== SECTIONS ========== */
+        section {
+            padding: 5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header .label {
+            display: inline-block;
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--primary);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* ========== SOBRE EL CURSO ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .about-text ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .about-text li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+            color: var(--text);
+        }
+
+        .about-text li::before {
+            content: '✓';
+            background: var(--primary);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .about-image {
+            background: linear-gradient(145deg, #0d9488, #22c55e);
+            border-radius: 24px;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image .emoji {
+            font-size: 8rem;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+
+        /* ========== OBJETIVOS ========== */
+        .objectives {
+            background: white;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .objective-card {
+            background: var(--bg);
+            border: 1px solid rgba(13, 148, 136, 0.12);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
+        }
+
+        .objective-card .num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            opacity: 0.3;
+            margin-bottom: 0.75rem;
+        }
+
+        .objective-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: var(--dark);
+        }
+
+        .objective-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* ========== MÓDULOS ========== */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .module-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .module-header .mod-num {
+            background: rgba(255,255,255,0.2);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .module-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .module-body {
+            padding: 1.5rem;
+        }
+
+        .module-body ul {
+            list-style: none;
+        }
+
+        .module-body li {
+            padding: 0.4rem 0;
+            color: var(--gray);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .module-body li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ========== POR QUÉ IMPORTA ========== */
+        .why {
+            background: linear-gradient(135deg, #042f2e, #0f766e);
+            color: white;
+        }
+
+        .why .section-header h2,
+        .why .section-header p {
+            color: white;
+        }
+
+        .why .section-header .label {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .why-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-4px);
+        }
+
+        .why-card .icon {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .why-card p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* ========== CTA ========== */
+        .cta {
+            text-align: center;
+            padding: 5rem 1.5rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 24px;
+            padding: 3.5rem 2rem;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(34,197,94,0.3), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-box h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .cta-box p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .cta-box .btn-primary {
+            position: relative;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 1.5rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            max-width: 280px;
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 3.5rem 1.25rem 4rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🌱</div>
+                <span>Desarrollo Sustentable</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre el curso</a></li>
+                    <li><a href="#objetivos">Objetivos</a></li>
+                    <li><a href="#modulos">Módulos</a></li>
+                    <li><a href="#por-que">¿Por qué importa?</a></li>
+                    <li><a href="#inicio" class="btn-nav">Comenzar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div>
+                <div class="badge">
+                    <span>🎓</span> Nuevo ingreso · Ingeniería Informática
+                </div>
+                <h1>Construye tu futuro<br><span>con responsabilidad</span></h1>
+                <p>
+                    Bienvenido al curso de <strong>Desarrollo Sustentable</strong>. 
+                    Aprende cómo la tecnología y la informática pueden ser herramientas 
+                    poderosas para crear un mundo más justo, verde y equilibrado.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#modulos" class="btn btn-primary">
+                        Explorar módulos →
+                    </a>
+                    <a href="#sobre" class="btn btn-secondary">
+                        Conocer el curso
+                    </a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="icon">🌍💻</div>
+                <h3>Tecnología + Sostenibilidad</h3>
+                <p>Formación esencial para los ingenieros informáticos del mañana</p>
+                <div class="stats">
+                    <div class="stat">
+                        <strong>8</strong>
+                        <span>Módulos</span>
+                    </div>
+                    <div class="stat">
+                        <strong>16</strong>
+                        <span>Semanas</span>
+                    </div>
+                    <div class="stat">
+                        <strong>100%</strong>
+                        <span>Práctico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE EL CURSO -->
+    <section id="sobre">
+        <div class="container">
+            <div class="section-header">
+                <span class="label">Presentación</span>
+                <h2>¿De qué trata este curso?</h2>
+                <p>Una introducción clara y aplicada al desarrollo sustentable desde la perspectiva de la Ingeniería Informática.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Tu primer paso hacia una ingeniería con propósito</h3>
+                    <p>
+                        El Desarrollo Sustentable no es solo un tema ambiental: es una forma de 
+                        pensar y diseñar soluciones tecnológicas que respondan a las necesidades 
+                        del presente sin comprometer las de las futuras generaciones.
+                    </p>
+                    <p>
+                        En este curso aprenderás los principios fundamentales de la sostenibilidad 
+                        y cómo aplicarlos en el desarrollo de software, sistemas, infraestructura 
+                        digital y proyectos tecnológicos reales.
+                    </p>
+                    <ul>
+                        <li>Comprenderás los 17 Objetivos de Desarrollo Sostenible (ODS)</li>
+                        <li>Analizarás el impacto ambiental de la tecnología y el cómputo</li>
+                        <li>Diseñarás soluciones informáticas con criterios de sostenibilidad</li>
+                        <li>Desarrollarás proyectos aplicados a problemas reales</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div class="emoji">🌿</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section class="objectives" id="objetivos">
+        <div class="container">
+            <div class="section-header">
+                <span class="label">Aprendizaje</span>
+                <h2>Objetivos del curso</h2>
+                <p>Al finalizar, serás capaz de integrar la sostenibilidad en tu forma de pensar y crear tecnología.</p>
+            </div>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="num">01</div>
+                    <h3>Comprender los fundamentos</h3>
+                    <p>Identificar los principios del desarrollo sustentable y su relación con la ingeniería y la sociedad.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="num">02</div>
+                    <h3>Analizar el impacto tecnológico</h3>
+                    <p>Evaluar la huella ecológica de sistemas informáticos, centros de datos y el ciclo de vida del software.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="num">03</div>
+                    <h3>Aplicar criterios sostenibles</h3>
+                    <p>Incorporar principios de eficiencia energética, economía circular y accesibilidad en proyectos de software.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="num">04</div>
+                    <h3>Proponer soluciones innovadoras</h3>
+                    <p>Diseñar y presentar proyectos tecnológicos orientados a resolver problemas de sostenibilidad real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section id="modulos">
+        <div class="container">
+            <div class="section-header">
+                <span class="label">Contenido</span>
+                <h2>Módulos del curso</h2>
+                <p>Un recorrido progresivo desde los conceptos básicos hasta la aplicación práctica en proyectos de ingeniería.</p>
+            </div>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">1</div>
+                        <h3>Fundamentos de la Sustentabilidad</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Historia y evolución del concepto</li>
+                            <li>Dimensiones: ambiental, social y económica</li>
+                            <li>Los 17 Objetivos de Desarrollo Sostenible</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">2</div>
+                        <h3>Tecnología y Medio Ambiente</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Huella de carbono digital</li>
+                            <li>Centros de datos y consumo energético</li>
+                            <li>Obsolescencia tecnológica</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">3</div>
+                        <h3>Software Sostenible</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Green Software Engineering</li>
+                            <li>Eficiencia de algoritmos y código</li>
+                            <li>Arquitecturas de bajo consumo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">4</div>
+                        <h3>Economía Circular y TI</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Ciclo de vida de dispositivos</li>
+                            <li>Reutilización y reciclaje de hardware</li>
+                            <li>Modelos de negocio sostenibles</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">5</div>
+                        <h3>Datos e Inteligencia para el planeta</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Big Data y monitoreo ambiental</li>
+                            <li>IA para predicción climática</li>
+                            <li>Sistemas de información geográfica</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">6</div>
+                        <h3>Ética y Responsabilidad Social</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Brecha digital y accesibilidad</li>
+                            <li>Ética en el desarrollo tecnológico</li>
+                            <li>Inclusión y equidad digital</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">7</div>
+                        <h3>Casos de Éxito y Tendencias</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Empresas tech sostenibles</li>
+                            <li>Innovaciones en cloud verde</li>
+                            <li>Políticas y regulaciones</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="mod-num">8</div>
+                        <h3>Proyecto Integrador</h3>
+                    </div>
+                    <div class="module-body">
+                        <ul>
+                            <li>Diseño de solución tecnológica</li>
+                            <li>Evaluación de impacto</li>
+                            <li>Presentación y defensa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ IMPORTA -->
+    <section class="why" id="por-que">
+        <div class="container">
+            <div class="section-header">
+                <span class="label">Relevancia</span>
+                <h2>¿Por qué es clave para ti como ingeniero informático?</h2>
+                <p>La sostenibilidad ya no es opcional: es una competencia profesional demandada en la industria tecnológica.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon">🚀</div>
+                    <h3>Empleabilidad</h3>
+                    <p>Las empresas buscan perfiles que sepan crear tecnología eficiente y responsable.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">🧠</div>
+                    <h3>Pensamiento crítico</h3>
+                    <p>Desarrollarás una visión sistémica para resolver problemas complejos del mundo real.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">⚡</div>
+                    <h3>Innovación</h3>
+                    <p>La sostenibilidad es uno de los mayores motores de innovación tecnológica actual.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">🤝</div>
+                    <h3>Impacto social</h3>
+                    <p>Tu trabajo puede contribuir directamente a un futuro más equitativo y sostenible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-box">
+            <h2>¿Listo para comenzar?</h2>
+            <p>
+                Este es tu primer paso para convertirte en un ingeniero informático 
+                capaz de crear tecnología con propósito y visión de futuro.
+            </p>
+            <a href="#modulos" class="btn btn-primary">
+                Ver contenido del curso →
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">🌱</div>
+                    <span>Desarrollo Sustentable</span>
+                </div>
+                <p>
+                    Curso introductorio para estudiantes de la carrera 
+                    de Ingeniería Informática. Formando profesionales con conciencia ambiental y social.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#sobre">Sobre el curso</a></li>
+                    <li><a href="#objetivos">Objetivos</a></li>
+                    <li><a href="#modulos">Módulos</a></li>
+                    <li><a href="#por-que">¿Por qué importa?</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Información</h4>
+                <ul>
+                    <li><a href="#">Carrera: Ingeniería Informática</a></li>
+                    <li><a href="#">Modalidad: Presencial / Híbrida</a></li>
+                    <li><a href="#">Duración: 16 semanas</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 · Curso de Desarrollo Sustentable · Ingeniería Informática</p>
+        </div>
+    </footer>
+
+</body>
+</html>
